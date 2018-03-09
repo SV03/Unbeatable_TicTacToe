@@ -11,3 +11,25 @@ const winCOmbos =[
 	[0,4,8],
 	[6,4,2]
 ]
+
+const cells = document.querySelectorAll('.cell');
+startGame();
+
+function startGame() {
+	document.querySelector(".endgame").style.display = "none"
+	orgiBoard = Array.from(Array(9).keys());
+	for(var i =0; i < cells.length; i++){
+		cells[i].innerText = '';
+		cells[i].style.removeProperty('background-color');
+		cells[i].addEventListener('click', turnClick, false);
+	}
+}
+
+function turnClick(square){
+	turn(sqaure.target.id, huPlayer)
+}
+
+function turn(squareId, player){
+	orgiBoard[squareId] = player;
+	document.getElementsById(squareId).innerText = player;
+}
